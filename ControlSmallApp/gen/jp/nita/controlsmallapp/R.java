@@ -12,11 +12,12 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f050003;
+        public static final int blured=0x7f050006;
+        public static final int cyan=0x7f050004;
         public static final int darkgray=0x7f050002;
+        public static final int focused=0x7f050005;
         public static final int gray=0x7f050001;
         public static final int lightgray=0x7f050000;
-        public static final int transparent_cyan=0x7f050005;
-        public static final int transparent_gray=0x7f050004;
     }
     public static final class dimen {
         public static final int height=0x7f060000;
@@ -54,25 +55,29 @@ public final class R {
         public static final int music_icon=0x7f020018;
         public static final int next=0x7f020019;
         public static final int next_icon=0x7f02001a;
-        public static final int none=0x7f02001b;
-        public static final int notify=0x7f02001c;
-        public static final int notify_icon=0x7f02001d;
-        public static final int pause=0x7f02001e;
-        public static final int plane=0x7f02001f;
-        public static final int play=0x7f020020;
-        public static final int play_icon=0x7f020021;
-        public static final int prev=0x7f020022;
-        public static final int prev_icon=0x7f020023;
-        public static final int rewind=0x7f020024;
-        public static final int rotate=0x7f020025;
-        public static final int rotate_off=0x7f020026;
-        public static final int rotate_on=0x7f020027;
-        public static final int stop=0x7f020028;
-        public static final int up=0x7f020029;
-        public static final int up_icon=0x7f02002a;
-        public static final int wifi=0x7f02002b;
-        public static final int wifi_off=0x7f02002c;
-        public static final int wifi_on=0x7f02002d;
+        public static final int nfc=0x7f02001b;
+        public static final int nfc_off=0x7f02001c;
+        public static final int nfc_on=0x7f02001d;
+        public static final int none=0x7f02001e;
+        public static final int notify=0x7f02001f;
+        public static final int notify_icon=0x7f020020;
+        public static final int pause=0x7f020021;
+        public static final int plane=0x7f020022;
+        public static final int play=0x7f020023;
+        public static final int play_icon=0x7f020024;
+        public static final int prev=0x7f020025;
+        public static final int prev_icon=0x7f020026;
+        public static final int rewind=0x7f020027;
+        public static final int rotate=0x7f020028;
+        public static final int rotate_off=0x7f020029;
+        public static final int rotate_on=0x7f02002a;
+        public static final int search=0x7f02002b;
+        public static final int stop=0x7f02002c;
+        public static final int up=0x7f02002d;
+        public static final int up_icon=0x7f02002e;
+        public static final int wifi=0x7f02002f;
+        public static final int wifi_off=0x7f020030;
+        public static final int wifi_on=0x7f020031;
     }
     public static final class id {
         public static final int action_table=0x7f07000a;
@@ -135,7 +140,9 @@ public final class R {
         public static final int app_name=0x7f040000;
         public static final int bluetooth_off=0x7f040005;
         public static final int bluetooth_on=0x7f040006;
-        public static final int music=0x7f040007;
+        public static final int music=0x7f040009;
+        public static final int nfc_off=0x7f040007;
+        public static final int nfc_on=0x7f040008;
         public static final int wifi_off=0x7f040003;
         public static final int wifi_on=0x7f040004;
     }

@@ -25,6 +25,8 @@
     <string name="wifi_on">Setting Wi-Fi to On</string>
     <string name="bluetooth_off">Setting Bluetooth to Off</string>
     <string name="bluetooth_on">Setting Bluetooth to On</string>
+    <string name="nfc_off">Setting NFC to Off</string>
+    <string name="nfc_on">Setting NFC to On</string>
     
     <string name="music">Music</string>
     

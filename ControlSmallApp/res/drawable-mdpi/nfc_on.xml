@@ -2,7 +2,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item>
-        <shape android:shape="oval" >
+        <shape
+            android:shape="oval" >
             <solid android:color="@color/cyan" />
 
             <stroke android:width="@dimen/padding" />
@@ -11,7 +12,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/rotate" />
+            android:src="@drawable/nfc" />
     </item>
 
 </layer-list>

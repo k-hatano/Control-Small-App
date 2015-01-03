@@ -4,12 +4,13 @@
     <color name="gray">#888888</color>
     <color name="darkgray">#444444</color>
     <color name="black">#000000</color>
-    <color name="transparent_gray">#444444</color>
-    <color name="transparent_cyan">#00AAAA</color>
+    <color name="cyan">#00AAAA</color>
     <dimen name="height">60dp</dimen>
     <dimen name="height_little">40dp</dimen>
     <dimen name="padding">8dp</dimen>
     <dimen name="margin">4dp</dimen>
     <dimen name="little">1dp</dimen>
     <dimen name="margin_large">20dp</dimen>
+    <color name="focused">#222222</color>
+    <color name="blured">#22222222</color>
 </resources>

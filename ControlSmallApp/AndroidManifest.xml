@@ -28,9 +28,12 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.nfc" />
+
+    <uses-permission android:name="android.permission.NFC" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.flash" />
@@ -42,10 +45,10 @@
 
         <receiver android:name=".SongChangedReceiver" >
             <intent-filter>
-                <action android:name="com.sonyericsson.music.playbackcontrol.ACTION_TRACK_STARTED"/>
+                <action android:name="com.sonyericsson.music.playbackcontrol.ACTION_TRACK_STARTED" />
             </intent-filter>
         </receiver>
-        
+
         <service
             android:name="jp.nita.controlsmallapp.MainApplication"
             android:exported="true" >

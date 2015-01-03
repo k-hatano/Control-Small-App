@@ -44,6 +44,8 @@ public class MainApplication extends SmallApplication {
 
 	private static MainApplication instance=null;
 	private Camera camera = null;
+	
+	boolean initializing = false;
 
 	@Override
 	public void onCreate() {
@@ -123,6 +125,7 @@ public class MainApplication extends SmallApplication {
 
 		findViewById(R.id.home_off).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
 				Intent intent = new Intent(Intent.ACTION_MAIN);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.addCategory(Intent.CATEGORY_HOME);
@@ -133,10 +136,29 @@ public class MainApplication extends SmallApplication {
 		findViewById(R.id.camera_off).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				getWindow().setWindowState(WindowState.MINIMIZED);
-				Intent intent = new Intent();
-				intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.addCategory(Intent.CATEGORY_DEFAULT);
+				startActivity(intent);
+			}
+		});
+		
+		findViewById(R.id.music_title).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addCategory(Intent.CATEGORY_APP_MUSIC);
+				startActivity(intent);
+			}
+		});
+		
+		findViewById(R.id.music_title_small).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addCategory(Intent.CATEGORY_APP_MUSIC);
 				startActivity(intent);
 			}
 		});
@@ -151,6 +173,12 @@ public class MainApplication extends SmallApplication {
 		 */
 
 		findViewById(R.id.minimize).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
+			}
+		});
+		
+		findViewById(R.id.minimize_small).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				getWindow().setWindowState(WindowState.MINIMIZED);
 			}
@@ -320,7 +348,6 @@ public class MainApplication extends SmallApplication {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,arg1);
-				updateSettingButtons();
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
@@ -329,8 +356,7 @@ public class MainApplication extends SmallApplication {
 			}
 			@Override
 			public void onStopTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
-				
+				updateSettingButtons();
 			}
 		});
 		
@@ -339,7 +365,7 @@ public class MainApplication extends SmallApplication {
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 				int musicVolume = arg1*manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)/255;
-				manager.setStreamVolume(AudioManager.STREAM_MUSIC,musicVolume,AudioManager.FLAG_PLAY_SOUND);
+				manager.setStreamVolume(AudioManager.STREAM_MUSIC,musicVolume,initializing?0:AudioManager.FLAG_PLAY_SOUND);
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
@@ -357,7 +383,7 @@ public class MainApplication extends SmallApplication {
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 				int ringVolume = arg1*manager.getStreamMaxVolume(AudioManager.STREAM_RING)/255;
-				manager.setStreamVolume(AudioManager.STREAM_RING,ringVolume,AudioManager.FLAG_PLAY_SOUND);
+				manager.setStreamVolume(AudioManager.STREAM_RING,ringVolume,initializing?0:AudioManager.FLAG_PLAY_SOUND);
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
@@ -384,6 +410,8 @@ public class MainApplication extends SmallApplication {
 
 	public void updateSettingButtons(){
 		try {
+			initializing=true;
+			
 			WifiManager wifi = (WifiManager)getSystemService(WIFI_SERVICE);
 			if(wifi.isWifiEnabled()) {
 				findViewById(R.id.wifi_off).setVisibility(View.GONE);
@@ -428,12 +456,14 @@ public class MainApplication extends SmallApplication {
 			((SeekBar)findViewById(R.id.light_seekbar)).setProgress(brightness);
 
 			AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+			
 			int musicVolume = 255*manager.getStreamVolume(AudioManager.STREAM_MUSIC)/manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 			((SeekBar)findViewById(R.id.music_seekbar)).setProgress(musicVolume);
 			
 			int ringVolume = 255*manager.getStreamVolume(AudioManager.STREAM_RING)/manager.getStreamMaxVolume(AudioManager.STREAM_RING);
 			((SeekBar)findViewById(R.id.notification_seekbar)).setProgress(ringVolume);
 			
+			initializing=false;
 		} catch (SettingNotFoundException e) {
 			e.printStackTrace();
 		}
