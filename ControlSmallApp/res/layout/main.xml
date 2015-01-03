@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2012 Sony Mobile Communications AB.
+ * 
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+-->
+<jp.nita.controlsmallapp.SizeChangeListeningRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:padding="@dimen/margin"
+    tools:context=".MainApplication" >
+
+    <RelativeLayout
+        android:id="@+id/large_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <TableLayout
+            android:id="@+id/settings_table"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/wifi_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/wifi_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/wifi_on"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/wifi_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/bluetooth_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/bluetooth_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/bluetooth_on"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/bluetooth_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/rotate_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/rotate_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/rotate_on"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/rotate_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+        </TableLayout>
+
+        <View
+            android:id="@+id/border_settings"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/little"
+            android:layout_below="@+id/settings_table"
+            android:layout_margin="@dimen/margin"
+            android:background="@color/darkgray" />
+
+        <TableLayout
+            android:id="@+id/action_table"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/minimize"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/minimize_bottomleft"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/led_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/led_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/led_on"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/led_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/home_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/home_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/camera_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/camera_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+        </TableLayout>
+
+        <View
+            android:id="@+id/border_action"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/little"
+            android:layout_above="@+id/action_table"
+            android:layout_margin="@dimen/margin"
+            android:background="@color/darkgray" />
+
+        <RelativeLayout
+            android:id="@+id/light_table"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height_little"
+            android:layout_below="@+id/border_settings"
+            android:orientation="vertical" >
+
+            <View
+                android:id="@+id/light_icon"
+                android:layout_width="@dimen/height_little"
+                android:layout_height="@dimen/height_little"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/light_icon"
+                android:gravity="center" />
+
+            <SeekBar
+                android:id="@+id/light_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/light_icon"
+                android:max="255" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/border_light"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/little"
+            android:layout_below="@+id/light_table"
+            android:layout_margin="@dimen/margin"
+            android:background="@color/darkgray" />
+
+        <RelativeLayout
+            android:id="@+id/notification_table"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height_little"
+            android:layout_above="@+id/border_action"
+            android:orientation="vertical" >
+
+            <View
+                android:id="@+id/notification_icon"
+                android:layout_width="@dimen/height_little"
+                android:layout_height="@dimen/height_little"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/notify_icon"
+                android:gravity="center" />
+
+            <SeekBar
+                android:id="@+id/notification_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/notification_icon"
+                android:max="255" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/border_notification"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/little"
+            android:layout_above="@+id/notification_table"
+            android:layout_margin="@dimen/margin"
+            android:background="@color/darkgray" />
+
+        <RelativeLayout
+            android:id="@+id/music_table"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height_little"
+            android:layout_above="@+id/border_notification"
+            android:orientation="vertical" >
+
+            <View
+                android:id="@+id/music_icon"
+                android:layout_width="@dimen/height_little"
+                android:layout_height="@dimen/height_little"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/music_icon"
+                android:gravity="center" />
+
+            <SeekBar
+                android:id="@+id/music_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/music_icon"
+                android:max="255" />
+        </RelativeLayout>
+
+        <TableLayout
+            android:id="@+id/music_control_table"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height"
+            android:layout_above="@+id/music_table"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/prev"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/prev_icon"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/play"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/play_icon"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/next_icon"
+                    android:gravity="center" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/music_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/music_control_table"
+            android:layout_alignLeft="@+id/border_light"
+            android:layout_alignRight="@+id/border_light"
+            android:layout_below="@+id/border_light"
+            android:gravity="center"
+            android:text="@string/music"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/small_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:visibility="gone" >
+
+        <TableLayout
+            android:id="@+id/settings_table_small"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/minimize_small"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/minimize_bottomleft"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/wifi_off_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/wifi_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/wifi_on_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/wifi_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/bluetooth_off_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/bluetooth_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/bluetooth_on_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/bluetooth_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/rotate_off_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/rotate_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/rotate_on_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/rotate_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+        </TableLayout>
+
+        <View
+            android:id="@+id/border_settings_small"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/little"
+            android:layout_above="@+id/settings_table_small"
+            android:layout_margin="@dimen/margin"
+            android:background="@color/darkgray" />
+
+        <TableLayout
+            android:id="@+id/music_control_table_small"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height"
+            android:layout_above="@+id/border_settings_small"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/down_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:layout_weight="1"
+                    android:background="@drawable/down_icon"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/prev_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:layout_weight="1"
+                    android:background="@drawable/prev_icon"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/play_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:layout_weight="1"
+                    android:background="@drawable/play_icon"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/next_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:layout_weight="1"
+                    android:background="@drawable/next_icon"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/up_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:layout_weight="1"
+                    android:background="@drawable/up_icon"
+                    android:gravity="center" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/music_title_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/music_control_table_small"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/padding"
+            android:gravity="center"
+            android:text="@string/music"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </RelativeLayout>
+
+</jp.nita.controlsmallapp.SizeChangeListeningRelativeLayout>
