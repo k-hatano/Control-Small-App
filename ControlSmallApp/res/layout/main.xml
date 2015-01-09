@@ -320,21 +320,21 @@
                     android:id="@+id/prev"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/prev_icon"
+                    android:background="@drawable/prev_btn"
                     android:gravity="center" />
 
                 <Button
                     android:id="@+id/play"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/play_icon"
+                    android:background="@drawable/play_btn"
                     android:gravity="center" />
 
                 <Button
                     android:id="@+id/next"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/next_icon"
+                    android:background="@drawable/next_btn"
                     android:gravity="center" />
 
                 <Button
@@ -485,7 +485,7 @@
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
                     android:layout_weight="1"
-                    android:background="@drawable/down_icon"
+                    android:background="@drawable/down_btn"
                     android:gravity="center" />
 
                 <Button
@@ -493,7 +493,7 @@
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
                     android:layout_weight="1"
-                    android:background="@drawable/prev_icon"
+                    android:background="@drawable/prev_btn"
                     android:gravity="center" />
 
                 <Button
@@ -501,7 +501,7 @@
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
                     android:layout_weight="1"
-                    android:background="@drawable/play_icon"
+                    android:background="@drawable/play_btn"
                     android:gravity="center" />
 
                 <Button
@@ -509,7 +509,7 @@
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
                     android:layout_weight="1"
-                    android:background="@drawable/next_icon"
+                    android:background="@drawable/next_btn"
                     android:gravity="center" />
 
                 <Button
@@ -517,7 +517,7 @@
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
                     android:layout_weight="1"
-                    android:background="@drawable/up_icon"
+                    android:background="@drawable/up_btn"
                     android:gravity="center" />
             </TableRow>
         </TableLayout>
