@@ -27,6 +27,8 @@
     <string name="bluetooth_on">Setting Bluetooth to On</string>
     <string name="nfc_off">Setting NFC to Off</string>
     <string name="nfc_on">Setting NFC to On</string>
+    <string name="autosync_off">Setting Auto-sync to Off</string>
+    <string name="autosync_on">Setting Auto-sync to On</string>
     
     <string name="music">Music</string>
     

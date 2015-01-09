@@ -19,6 +19,7 @@ package jp.nita.controlsmallapp;
 
 import android.app.Instrumentation;
 import android.bluetooth.BluetoothAdapter;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Camera;
@@ -333,6 +334,50 @@ public class MainApplication extends SmallApplication {
 				findViewById(R.id.bluetooth_off_small).setVisibility(View.VISIBLE);
 			}
 		});
+		
+		findViewById(R.id.autosync_off).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Toast.makeText(v.getContext(), getString(R.string.autosync_on), Toast.LENGTH_LONG).show();
+				ContentResolver.setMasterSyncAutomatically(true);
+				findViewById(R.id.autosync_off).setVisibility(View.GONE);
+				findViewById(R.id.autosync_on).setVisibility(View.VISIBLE);
+				findViewById(R.id.autosync_off_small).setVisibility(View.GONE);
+				findViewById(R.id.autosync_on_small).setVisibility(View.VISIBLE);
+			}
+		});
+
+		findViewById(R.id.autosync_on).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Toast.makeText(v.getContext(), getString(R.string.autosync_off), Toast.LENGTH_LONG).show();
+				ContentResolver.setMasterSyncAutomatically(false);
+				findViewById(R.id.autosync_on).setVisibility(View.GONE);
+				findViewById(R.id.autosync_off).setVisibility(View.VISIBLE);
+				findViewById(R.id.autosync_on_small).setVisibility(View.GONE);
+				findViewById(R.id.autosync_off_small).setVisibility(View.VISIBLE);
+			}
+		});
+		
+		findViewById(R.id.autosync_off_small).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Toast.makeText(v.getContext(), getString(R.string.autosync_on), Toast.LENGTH_LONG).show();
+				ContentResolver.setMasterSyncAutomatically(true);
+				findViewById(R.id.autosync_off).setVisibility(View.GONE);
+				findViewById(R.id.autosync_on).setVisibility(View.VISIBLE);
+				findViewById(R.id.autosync_off_small).setVisibility(View.GONE);
+				findViewById(R.id.autosync_on_small).setVisibility(View.VISIBLE);
+			}
+		});
+
+		findViewById(R.id.autosync_on_small).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Toast.makeText(v.getContext(), getString(R.string.autosync_off), Toast.LENGTH_LONG).show();
+				ContentResolver.setMasterSyncAutomatically(false);
+				findViewById(R.id.autosync_on).setVisibility(View.GONE);
+				findViewById(R.id.autosync_off).setVisibility(View.VISIBLE);
+				findViewById(R.id.autosync_on_small).setVisibility(View.GONE);
+				findViewById(R.id.autosync_off_small).setVisibility(View.VISIBLE);
+			}
+		});
 
 		findViewById(R.id.led_off).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -446,6 +491,19 @@ public class MainApplication extends SmallApplication {
 				findViewById(R.id.bluetooth_on_small).setVisibility(View.GONE);
 				findViewById(R.id.bluetooth_off_small).setVisibility(View.VISIBLE);
 			}
+			
+			if(ContentResolver.getMasterSyncAutomatically()){
+				findViewById(R.id.autosync_off).setVisibility(View.GONE);
+				findViewById(R.id.autosync_on).setVisibility(View.VISIBLE);
+				findViewById(R.id.autosync_off_small).setVisibility(View.GONE);
+				findViewById(R.id.autosync_on_small).setVisibility(View.VISIBLE);
+			}else{
+				findViewById(R.id.autosync_on).setVisibility(View.GONE);
+				findViewById(R.id.autosync_off).setVisibility(View.VISIBLE);
+				findViewById(R.id.autosync_on_small).setVisibility(View.GONE);
+				findViewById(R.id.autosync_off_small).setVisibility(View.VISIBLE);
+			}
+			
 			if (Settings.System.getInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION) > 0){
 				findViewById(R.id.rotate_off).setVisibility(View.GONE);
 				findViewById(R.id.rotate_on).setVisibility(View.VISIBLE);
