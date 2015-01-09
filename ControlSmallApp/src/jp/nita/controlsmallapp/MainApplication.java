@@ -55,7 +55,7 @@ public class MainApplication extends SmallApplication {
 
 		SmallAppWindow.Attributes attr = getWindow().getAttributes();
 		attr.minWidth = 512; /* The minimum width of the application, if it's resizable.*/
-		attr.minHeight = 400; /*The minimum height of the application, if it's resizable.*/
+		attr.minHeight = 380; /*The minimum height of the application, if it's resizable.*/
 		attr.width = 640;  /*The requested width of the application.*/
 		attr.height = 720;  /*The requested height of the application.*/
 		attr.flags |= SmallAppWindow.Attributes.FLAG_RESIZABLE;   /*Use this flag to enable the application window to be resizable*/
@@ -129,6 +129,16 @@ public class MainApplication extends SmallApplication {
 				Intent intent = new Intent(Intent.ACTION_MAIN);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.addCategory(Intent.CATEGORY_HOME);
+				startActivity(intent);
+			}
+		});
+		
+		findViewById(R.id.search_off).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
+				Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addCategory(Intent.CATEGORY_DEFAULT);
 				startActivity(intent);
 			}
 		});

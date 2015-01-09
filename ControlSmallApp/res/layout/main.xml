@@ -83,6 +83,21 @@
                     android:background="@drawable/bluetooth_on"
                     android:gravity="center"
                     android:visibility="gone" />
+                
+                <Button
+                    android:id="@+id/autosync_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/autosync_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/autosync_on"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/autosync_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/rotate_off"
@@ -156,14 +171,21 @@
                     android:id="@+id/home_off"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/home_off"
+                    android:background="@drawable/home_btn"
+                    android:gravity="center" />
+                
+                <Button
+                    android:id="@+id/search_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/search_btn"
                     android:gravity="center" />
 
                 <Button
                     android:id="@+id/camera_off"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/camera_off"
+                    android:background="@drawable/camera_btn"
                     android:gravity="center" />
 
                 <Button
@@ -397,6 +419,21 @@
                     android:background="@drawable/bluetooth_on"
                     android:gravity="center"
                     android:visibility="gone" />
+                
+                <Button
+                    android:id="@+id/autosync_off_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/autosync_off"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/autosync_on_small"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/autosync_on"
+                    android:gravity="center"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/rotate_off_small"
@@ -490,9 +527,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/music_control_table_small"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/padding"
+            android:layout_marginTop="@dimen/margin_large"
             android:gravity="center"
             android:text="@string/music"
             android:textAppearance="?android:attr/textAppearanceLarge" />
