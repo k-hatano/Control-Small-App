@@ -83,7 +83,7 @@
                     android:background="@drawable/bluetooth_on"
                     android:gravity="center"
                     android:visibility="gone" />
-                
+
                 <Button
                     android:id="@+id/autosync_off"
                     android:layout_width="@dimen/height"
@@ -173,12 +173,12 @@
                     android:layout_height="@dimen/height"
                     android:background="@drawable/home_btn"
                     android:gravity="center" />
-                
+
                 <Button
-                    android:id="@+id/search_off"
+                    android:id="@+id/switcher_off"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/search_btn"
+                    android:background="@drawable/switcher_btn"
                     android:gravity="center" />
 
                 <Button
@@ -346,17 +346,40 @@
             </TableRow>
         </TableLayout>
 
-        <TextView
-            android:id="@+id/music_title"
+        <RelativeLayout
+            android:id="@+id/music_title_relative_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/music_control_table"
             android:layout_alignLeft="@+id/border_light"
             android:layout_alignRight="@+id/border_light"
             android:layout_below="@+id/border_light"
-            android:gravity="center"
-            android:text="@string/music"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/music_title_linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/music_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/music"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/music_artist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -391,64 +414,18 @@
                     android:gravity="center" />
 
                 <Button
-                    android:id="@+id/wifi_off_small"
+                    android:id="@+id/down_small"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/wifi_off"
+                    android:background="@drawable/down_btn"
                     android:gravity="center" />
 
                 <Button
-                    android:id="@+id/wifi_on_small"
+                    android:id="@+id/up_small"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/wifi_on"
-                    android:gravity="center"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/bluetooth_off_small"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/bluetooth_off"
+                    android:background="@drawable/up_btn"
                     android:gravity="center" />
-
-                <Button
-                    android:id="@+id/bluetooth_on_small"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/bluetooth_on"
-                    android:gravity="center"
-                    android:visibility="gone" />
-                
-                <Button
-                    android:id="@+id/autosync_off_small"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/autosync_off"
-                    android:gravity="center" />
-
-                <Button
-                    android:id="@+id/autosync_on_small"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/autosync_on"
-                    android:gravity="center"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/rotate_off_small"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/rotate_off"
-                    android:gravity="center" />
-
-                <Button
-                    android:id="@+id/rotate_on_small"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/rotate_on"
-                    android:gravity="center"
-                    android:visibility="gone" />
 
                 <Button
                     android:layout_width="fill_parent"
@@ -481,18 +458,16 @@
                 android:layout_weight="1" >
 
                 <Button
-                    android:id="@+id/down_small"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/down_btn"
+                    android:background="@drawable/none"
                     android:gravity="center" />
 
                 <Button
                     android:id="@+id/prev_small"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:layout_weight="1"
                     android:background="@drawable/prev_btn"
                     android:gravity="center" />
 
@@ -500,7 +475,6 @@
                     android:id="@+id/play_small"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:layout_weight="1"
                     android:background="@drawable/play_btn"
                     android:gravity="center" />
 
@@ -508,32 +482,53 @@
                     android:id="@+id/next_small"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:layout_weight="1"
                     android:background="@drawable/next_btn"
                     android:gravity="center" />
 
                 <Button
-                    android:id="@+id/up_small"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/up_btn"
+                    android:background="@drawable/none"
                     android:gravity="center" />
             </TableRow>
         </TableLayout>
 
-        <TextView
-            android:id="@+id/music_title_small"
+        <RelativeLayout
+            android:id="@+id/music_title_relative_layout_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/music_control_table_small"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="@dimen/margin_large"
-            android:gravity="center"
-            android:text="@string/music"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/music_title_linear_layout_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/music_title_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/music"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/music_artist_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
 </jp.nita.controlsmallapp.SizeChangeListeningRelativeLayout>

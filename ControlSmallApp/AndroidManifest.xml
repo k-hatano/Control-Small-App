@@ -33,10 +33,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.nfc" />
-
-    <uses-permission android:name="android.permission.NFC" />
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.flash" />
 
@@ -48,6 +44,7 @@
         <receiver android:name=".SongChangedReceiver" >
             <intent-filter>
                 <action android:name="com.sonyericsson.music.playbackcontrol.ACTION_TRACK_STARTED" />
+                <action android:name="com.sonyericsson.music.playbackcontrol.ACTION_PAUSED" />
             </intent-filter>
         </receiver>
 
