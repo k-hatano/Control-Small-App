@@ -198,6 +198,26 @@ public class MainApplication extends SmallApplication {
 				startActivity(intent);
 			}
 		});
+		
+		findViewById(R.id.music_artist).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addCategory(Intent.CATEGORY_APP_MUSIC);
+				startActivity(intent);
+			}
+		});
+
+		findViewById(R.id.music_artist_small).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addCategory(Intent.CATEGORY_APP_MUSIC);
+				startActivity(intent);
+			}
+		});
 
 		/*
 		findViewById(R.id.call_large).setOnClickListener(new View.OnClickListener() {
