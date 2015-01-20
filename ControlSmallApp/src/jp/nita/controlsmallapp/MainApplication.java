@@ -320,6 +320,7 @@ public class MainApplication extends SmallApplication {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,arg1);
+				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.music_volume).toString()+" : "+arg1+"/255");
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
@@ -329,6 +330,7 @@ public class MainApplication extends SmallApplication {
 			@Override
 			public void onStopTrackingTouch(SeekBar arg0) {
 				updateSettingButtons();
+				updateSongTitle();
 			}
 		});
 
@@ -336,8 +338,8 @@ public class MainApplication extends SmallApplication {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-				int musicVolume = arg1*manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)/255;
-				manager.setStreamVolume(AudioManager.STREAM_MUSIC,musicVolume,0);
+				manager.setStreamVolume(AudioManager.STREAM_MUSIC,arg1,0);
+				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.music_volume).toString()+" : "+arg1+"/"+manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
@@ -347,11 +349,11 @@ public class MainApplication extends SmallApplication {
 			@Override
 			public void onStopTrackingTouch(SeekBar arg0) {
 				updateSettingButtons();
+				updateSongTitle();
 				
 				int arg1=arg0.getProgress();
 				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-				int musicVolume = arg1*manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)/255;
-				manager.setStreamVolume(AudioManager.STREAM_MUSIC,musicVolume,initializing?0:AudioManager.FLAG_PLAY_SOUND);
+				manager.setStreamVolume(AudioManager.STREAM_MUSIC,arg1,initializing?0:AudioManager.FLAG_PLAY_SOUND);
 			}
 		});
 
@@ -359,8 +361,8 @@ public class MainApplication extends SmallApplication {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-				int ringVolume = arg1*manager.getStreamMaxVolume(AudioManager.STREAM_RING)/255;
-				manager.setStreamVolume(AudioManager.STREAM_RING,ringVolume,0);
+				manager.setStreamVolume(AudioManager.STREAM_RING,arg1,0);
+				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.ringer_volume).toString()+" : "+arg1+"/"+manager.getStreamMaxVolume(AudioManager.STREAM_RING));
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
@@ -370,11 +372,11 @@ public class MainApplication extends SmallApplication {
 			@Override
 			public void onStopTrackingTouch(SeekBar arg0) {
 				updateSettingButtons();
+				updateSongTitle();
 				
 				int arg1=arg0.getProgress();
 				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-				int ringVolume = arg1*manager.getStreamMaxVolume(AudioManager.STREAM_RING)/255;
-				manager.setStreamVolume(AudioManager.STREAM_RING,ringVolume,initializing?0:AudioManager.FLAG_PLAY_SOUND);
+				manager.setStreamVolume(AudioManager.STREAM_RING,arg1,initializing?0:AudioManager.FLAG_PLAY_SOUND);
 			}
 		});
 
@@ -440,11 +442,11 @@ public class MainApplication extends SmallApplication {
 
 			AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
-			int musicVolume = 255*manager.getStreamVolume(AudioManager.STREAM_MUSIC)/manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-			((SeekBar)findViewById(R.id.music_seekbar)).setProgress(musicVolume);
+			((SeekBar)findViewById(R.id.music_seekbar)).setMax(manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+			((SeekBar)findViewById(R.id.music_seekbar)).setProgress(manager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
-			int ringVolume = 255*manager.getStreamVolume(AudioManager.STREAM_RING)/manager.getStreamMaxVolume(AudioManager.STREAM_RING);
-			((SeekBar)findViewById(R.id.notification_seekbar)).setProgress(ringVolume);
+			((SeekBar)findViewById(R.id.notification_seekbar)).setMax(manager.getStreamVolume(AudioManager.STREAM_RING));
+			((SeekBar)findViewById(R.id.notification_seekbar)).setProgress(manager.getStreamMaxVolume(AudioManager.STREAM_RING));
 
 			initializing=false;
 		} catch (SettingNotFoundException e) {
@@ -480,22 +482,29 @@ public class MainApplication extends SmallApplication {
 			return null;
 		}
 	}
+	
+	String title=getString(R.string.music);
+	String artist="";
 
-	public void setSongTitle(String title,String artist){
+	public void updateSongTitle(){
 		((TextView)findViewById(R.id.music_title)).setText(title);
 		((TextView)findViewById(R.id.music_title_small)).setText(title);
 		((TextView)findViewById(R.id.music_artist)).setText(artist);
 		((TextView)findViewById(R.id.music_artist_small)).setText(artist);
 	}
 
-	public static void songHasChanged(String title,String artist){
+	public static void songHasChanged(String t,String a){
 		if(instance!=null){
-			instance.setSongTitle(title,artist);
+			instance.title=t;
+			instance.artist=a;
+			instance.updateSongTitle();
 		}
 	}
 
 	public static void updateLayout(){
 		if(instance!=null){
+			instance.updateSettingButtons();
+			instance.findViewById(R.id.layout).invalidate();
 			instance.updateSettingButtons();
 			instance.findViewById(R.id.layout).invalidate();
 		}

@@ -91,17 +91,13 @@ public final class R {
         public static final int search_off=0x7f02003c;
         public static final int search_on=0x7f02003d;
         public static final int stop=0x7f02003e;
-        public static final int switcher=0x7f02003f;
-        public static final int switcher_btn=0x7f020040;
-        public static final int switcher_off=0x7f020041;
-        public static final int switcher_on=0x7f020042;
-        public static final int up=0x7f020043;
-        public static final int up_btn=0x7f020044;
-        public static final int up_off=0x7f020045;
-        public static final int up_on=0x7f020046;
-        public static final int wifi=0x7f020047;
-        public static final int wifi_off=0x7f020048;
-        public static final int wifi_on=0x7f020049;
+        public static final int up=0x7f02003f;
+        public static final int up_btn=0x7f020040;
+        public static final int up_off=0x7f020041;
+        public static final int up_on=0x7f020042;
+        public static final int wifi=0x7f020043;
+        public static final int wifi_off=0x7f020044;
+        public static final int wifi_on=0x7f020045;
     }
     public static final class id {
         public static final int action_table=0x7f07000c;
@@ -169,9 +165,12 @@ public final class R {
         public static final int autosync_on=0x7f04000a;
         public static final int bluetooth_off=0x7f040005;
         public static final int bluetooth_on=0x7f040006;
+        public static final int brightness=0x7f04000c;
         public static final int music=0x7f04000b;
+        public static final int music_volume=0x7f04000d;
         public static final int nfc_off=0x7f040007;
         public static final int nfc_on=0x7f040008;
+        public static final int ringer_volume=0x7f04000e;
         public static final int wifi_off=0x7f040003;
         public static final int wifi_on=0x7f040004;
     }
