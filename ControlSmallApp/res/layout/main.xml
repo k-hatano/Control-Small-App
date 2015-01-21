@@ -178,7 +178,7 @@
                     android:id="@+id/switcher_off"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/search_btn"
+                    android:background="@drawable/switcher_btn"
                     android:gravity="center" />
 
                 <Button

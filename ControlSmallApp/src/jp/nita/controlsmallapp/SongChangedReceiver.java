@@ -15,7 +15,7 @@ public class SongChangedReceiver extends BroadcastReceiver {
 		String album=intent.getExtras().getString("ALBUM_NAME");
 		
 		if(title==null||"".equals(title)){
-			songTitle="Music";
+			songTitle=context.getString(R.string.music);
 		}else{
 			songTitle=title;
 		}
@@ -28,7 +28,7 @@ public class SongChangedReceiver extends BroadcastReceiver {
 				songArtist=artist+" - "+album;
 			}
 		}
-		MainApplication.songHasChanged(songTitle,songArtist);
+		MainApplication.songHasChanged();
 	}
 
 }

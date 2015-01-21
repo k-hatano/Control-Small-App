@@ -51,6 +51,9 @@ public class MainApplication extends SmallApplication {
 
 	boolean initializing = false;
 
+	String title="";
+	String artist="";
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -59,9 +62,9 @@ public class MainApplication extends SmallApplication {
 
 		SmallAppWindow.Attributes attr = getWindow().getAttributes();
 		attr.minWidth = 512; /* The minimum width of the application, if it's resizable.*/
-		attr.minHeight = 420; /*The minimum height of the application, if it's resizable.*/
+		attr.minHeight = 460; /*The minimum height of the application, if it's resizable.*/
 		attr.width = 680;  /*The requested width of the application.*/
-		attr.height = 720;  /*The requested height of the application.*/
+		attr.height = 800;  /*The requested height of the application.*/
 		attr.flags |= SmallAppWindow.Attributes.FLAG_RESIZABLE;   /*Use this flag to enable the application window to be resizable*/
 		attr.flags |= SmallAppWindow.Attributes.FLAG_NO_TITLEBAR;  /*Use this flag to remove the titlebar from the window*/
 		//        attr.flags |= SmallAppWindow.Attributes.FLAG_HARDWARE_ACCELERATED;  /* Use this flag to enable hardware accelerated rendering*/
@@ -198,7 +201,7 @@ public class MainApplication extends SmallApplication {
 				startActivity(intent);
 			}
 		});
-		
+
 		findViewById(R.id.music_artist).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				getWindow().setWindowState(WindowState.MINIMIZED);
@@ -340,12 +343,13 @@ public class MainApplication extends SmallApplication {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,arg1);
-				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.music_volume).toString()+" : "+arg1+"/255");
+				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.brightness).toString()+" : "+arg1+"/255");
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
-
+				int arg1=arg0.getProgress();
+				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,arg1);
+				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.brightness).toString()+" : "+arg1+"/255");
 			}
 			@Override
 			public void onStopTrackingTouch(SeekBar arg0) {
@@ -363,14 +367,16 @@ public class MainApplication extends SmallApplication {
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
-
+				int arg1=arg0.getProgress();
+				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+				manager.setStreamVolume(AudioManager.STREAM_MUSIC,arg1,0);
+				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.music_volume).toString()+" : "+arg1+"/"+manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
 			}
 			@Override
 			public void onStopTrackingTouch(SeekBar arg0) {
 				updateSettingButtons();
 				updateSongTitle();
-				
+
 				int arg1=arg0.getProgress();
 				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 				manager.setStreamVolume(AudioManager.STREAM_MUSIC,arg1,initializing?0:AudioManager.FLAG_PLAY_SOUND);
@@ -386,14 +392,16 @@ public class MainApplication extends SmallApplication {
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
-
+				int arg1=arg0.getProgress();
+				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+				manager.setStreamVolume(AudioManager.STREAM_RING,arg1,0);
+				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.ringer_volume).toString()+" : "+arg1+"/"+manager.getStreamMaxVolume(AudioManager.STREAM_RING));
 			}
 			@Override
 			public void onStopTrackingTouch(SeekBar arg0) {
 				updateSettingButtons();
 				updateSongTitle();
-				
+
 				int arg1=arg0.getProgress();
 				AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 				manager.setStreamVolume(AudioManager.STREAM_RING,arg1,initializing?0:AudioManager.FLAG_PLAY_SOUND);
@@ -407,9 +415,13 @@ public class MainApplication extends SmallApplication {
 			}
 		});
 
+		if(SongChangedReceiver.songTitle==null||"".equals(SongChangedReceiver.songTitle)){
+			SongChangedReceiver.songTitle=getString(R.string.music);
+		}
+
 		instance=this;
 		updateSettingButtons();
-
+		updateSongTitle();
 	}
 
 	public void updateSettingButtons(){
@@ -465,8 +477,9 @@ public class MainApplication extends SmallApplication {
 			((SeekBar)findViewById(R.id.music_seekbar)).setMax(manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
 			((SeekBar)findViewById(R.id.music_seekbar)).setProgress(manager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
-			((SeekBar)findViewById(R.id.notification_seekbar)).setMax(manager.getStreamVolume(AudioManager.STREAM_RING));
-			((SeekBar)findViewById(R.id.notification_seekbar)).setProgress(manager.getStreamMaxVolume(AudioManager.STREAM_RING));
+			((SeekBar)findViewById(R.id.notification_seekbar)).setMax(manager.getStreamMaxVolume(AudioManager.STREAM_RING));
+			((SeekBar)findViewById(R.id.notification_seekbar)).setProgress(manager.getStreamVolume(AudioManager.STREAM_RING));
+
 
 			initializing=false;
 		} catch (SettingNotFoundException e) {
@@ -502,21 +515,16 @@ public class MainApplication extends SmallApplication {
 			return null;
 		}
 	}
-	
-	String title=getString(R.string.music);
-	String artist="";
 
 	public void updateSongTitle(){
-		((TextView)findViewById(R.id.music_title)).setText(title);
-		((TextView)findViewById(R.id.music_title_small)).setText(title);
-		((TextView)findViewById(R.id.music_artist)).setText(artist);
-		((TextView)findViewById(R.id.music_artist_small)).setText(artist);
+		((TextView)findViewById(R.id.music_title)).setText(SongChangedReceiver.songTitle);
+		((TextView)findViewById(R.id.music_title_small)).setText(SongChangedReceiver.songTitle);
+		((TextView)findViewById(R.id.music_artist)).setText(SongChangedReceiver.songArtist);
+		((TextView)findViewById(R.id.music_artist_small)).setText(SongChangedReceiver.songArtist);
 	}
 
-	public static void songHasChanged(String t,String a){
+	public static void songHasChanged(){
 		if(instance!=null){
-			instance.title=t;
-			instance.artist=a;
 			instance.updateSongTitle();
 		}
 	}
