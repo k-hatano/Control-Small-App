@@ -152,6 +152,7 @@ public class MainApplication extends SmallApplication {
 
 		findViewById(R.id.switcher_off).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
 				try {
 					Class<?> serviceManagerClass = Class.forName("android.os.ServiceManager");
 					Method getService = serviceManagerClass.getMethod("getService", String.class);
@@ -474,12 +475,11 @@ public class MainApplication extends SmallApplication {
 
 			AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
-			((SeekBar)findViewById(R.id.music_seekbar)).setMax(manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
 			((SeekBar)findViewById(R.id.music_seekbar)).setProgress(manager.getStreamVolume(AudioManager.STREAM_MUSIC));
+			((SeekBar)findViewById(R.id.music_seekbar)).setMax(manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
 
-			((SeekBar)findViewById(R.id.notification_seekbar)).setMax(manager.getStreamMaxVolume(AudioManager.STREAM_RING));
 			((SeekBar)findViewById(R.id.notification_seekbar)).setProgress(manager.getStreamVolume(AudioManager.STREAM_RING));
-
+			((SeekBar)findViewById(R.id.notification_seekbar)).setMax(manager.getStreamMaxVolume(AudioManager.STREAM_RING));
 
 			initializing=false;
 		} catch (SettingNotFoundException e) {
