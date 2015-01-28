@@ -175,10 +175,10 @@
                     android:gravity="center" />
 
                 <Button
-                    android:id="@+id/switcher_off"
+                    android:id="@+id/notification_off"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/switcher_btn"
+                    android:background="@drawable/notification_btn"
                     android:gravity="center" />
 
                 <Button
