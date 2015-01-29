@@ -175,17 +175,17 @@
                     android:gravity="center" />
 
                 <Button
+                    android:id="@+id/switcher_off"
+                    android:layout_width="@dimen/height"
+                    android:layout_height="@dimen/height"
+                    android:background="@drawable/switcher_btn"
+                    android:gravity="center" />
+
+                <Button
                     android:id="@+id/notification_off"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
                     android:background="@drawable/notification_btn"
-                    android:gravity="center" />
-
-                <Button
-                    android:id="@+id/camera_off"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/camera_btn"
                     android:gravity="center" />
 
                 <Button

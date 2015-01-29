@@ -118,7 +118,6 @@ public final class R {
         public static final int border_notification=0x7f07001b;
         public static final int border_settings=0x7f07000b;
         public static final int border_settings_small=0x7f07002c;
-        public static final int camera_off=0x7f070012;
         public static final int down_small=0x7f07002a;
         public static final int home_off=0x7f070010;
         public static final int large_layout=0x7f070001;
@@ -146,7 +145,7 @@ public final class R {
         public static final int next=0x7f070022;
         public static final int next_small=0x7f070030;
         public static final int notification_icon=0x7f070019;
-        public static final int notification_off=0x7f070011;
+        public static final int notification_off=0x7f070012;
         public static final int notification_seekbar=0x7f07001a;
         public static final int notification_table=0x7f070018;
         public static final int play=0x7f070021;
@@ -158,6 +157,7 @@ public final class R {
         public static final int settings_table=0x7f070002;
         public static final int settings_table_small=0x7f070028;
         public static final int small_layout=0x7f070027;
+        public static final int switcher_off=0x7f070011;
         public static final int up_small=0x7f07002b;
         public static final int wifi_off=0x7f070003;
         public static final int wifi_on=0x7f070004;

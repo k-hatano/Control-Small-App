@@ -150,57 +150,57 @@ public class MainApplication extends SmallApplication {
 		//			}
 		//		});
 
-		//		findViewById(R.id.switcher_off).setOnClickListener(new View.OnClickListener() {
-		//			public void onClick(View v) {
-		//				getWindow().setWindowState(WindowState.MINIMIZED);
-		//				try {
-		//					Class<?> serviceManagerClass = Class.forName("android.os.ServiceManager");
-		//					Method getService = serviceManagerClass.getMethod("getService", String.class);
-		//					IBinder retbinder = (IBinder) getService.invoke(serviceManagerClass, "statusbar");
-		//					Class<?> statusBarClass = Class.forName(retbinder.getInterfaceDescriptor());
-		//					Object statusBarObject = statusBarClass.getClasses()[0].getMethod("asInterface", IBinder.class).invoke(null, new Object[] { retbinder });
-		//					if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-		//						Method preloadRecentApps = statusBarClass.getMethod("preloadRecentApps");
-		//						preloadRecentApps.setAccessible(true);
-		//						preloadRecentApps.invoke(statusBarObject);
-		//					}
-		//					Method toggleRecentApps = statusBarClass.getMethod("toggleRecentApps");
-		//					toggleRecentApps.setAccessible(true);
-		//					toggleRecentApps.invoke(statusBarObject);
-		//				} catch (Exception e) {
-		//					e.printStackTrace();
-		//				}
-		//			}
-		//		});
+		findViewById(R.id.switcher_off).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
+				try {
+					Class<?> serviceManagerClass = Class.forName("android.os.ServiceManager");
+					Method getService = serviceManagerClass.getMethod("getService", String.class);
+					IBinder retbinder = (IBinder) getService.invoke(serviceManagerClass, "statusbar");
+					Class<?> statusBarClass = Class.forName(retbinder.getInterfaceDescriptor());
+					Object statusBarObject = statusBarClass.getClasses()[0].getMethod("asInterface", IBinder.class).invoke(null, new Object[] { retbinder });
+					if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+						Method preloadRecentApps = statusBarClass.getMethod("preloadRecentApps");
+						preloadRecentApps.setAccessible(true);
+						preloadRecentApps.invoke(statusBarObject);
+					}
+					Method toggleRecentApps = statusBarClass.getMethod("toggleRecentApps");
+					toggleRecentApps.setAccessible(true);
+					toggleRecentApps.invoke(statusBarObject);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 		findViewById(R.id.notification_off).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				getWindow().setWindowState(WindowState.MINIMIZED);
 				try {
-				    Object sbservice = getSystemService("statusbar");
-				    Class<?> statusbarManager = Class.forName("android.app.StatusBarManager");
-				    Method expand;
-				    if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-				      expand = statusbarManager.getMethod("expand");
-				    } else {  // API Level 17 (Android 4.2, 4.2.2) or higher
-				      expand = statusbarManager.getMethod("expandNotificationsPanel");
-				    }
-				    expand.invoke(sbservice);
-				  } catch (Exception e) {
-				    e.printStackTrace();
-				  }
+					Object sbservice = getSystemService("statusbar");
+					Class<?> statusbarManager = Class.forName("android.app.StatusBarManager");
+					Method expand;
+					if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+						expand = statusbarManager.getMethod("expand");
+					} else {  // API Level 17 (Android 4.2, 4.2.2) or higher
+						expand = statusbarManager.getMethod("expandNotificationsPanel");
+					}
+					expand.invoke(sbservice);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 
-		findViewById(R.id.camera_off).setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				getWindow().setWindowState(WindowState.MINIMIZED);
-				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addCategory(Intent.CATEGORY_DEFAULT);
-				startActivity(intent);
-			}
-		});
+		//		findViewById(R.id.camera_off).setOnClickListener(new View.OnClickListener() {
+		//			public void onClick(View v) {
+		//				getWindow().setWindowState(WindowState.MINIMIZED);
+		//				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		//				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		//				intent.addCategory(Intent.CATEGORY_DEFAULT);
+		//				startActivity(intent);
+		//			}
+		//		});
 
 		findViewById(R.id.music_title).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
