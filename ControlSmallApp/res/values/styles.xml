@@ -13,4 +13,5 @@
     <dimen name="margin_large">20dp</dimen>
     <color name="focused">#222222</color>
     <color name="blured">#22222222</color>
+    <color name="transparent">#00000000</color>
 </resources>
