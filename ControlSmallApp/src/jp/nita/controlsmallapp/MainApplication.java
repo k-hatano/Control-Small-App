@@ -47,7 +47,7 @@ import com.sony.smallapp.SmallAppWindow.WindowState;
 public class MainApplication extends SmallApplication {
 
 	private static MainApplication instance=null;
-	private Camera camera = null;
+//	private Camera camera = null;
 
 	boolean initializing = false;
 
@@ -71,8 +71,8 @@ public class MainApplication extends SmallApplication {
 
 		getWindow().setAttributes(attr); /*setting window attributes*/
 
-		camera = Camera.open();
-		camera.startPreview();
+//		camera = Camera.open();
+//		camera.startPreview();
 
 		findViewById(R.id.prev).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -339,44 +339,44 @@ public class MainApplication extends SmallApplication {
 			}
 		});
 
-		findViewById(R.id.led_off).setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Camera.Parameters params = camera.getParameters();
-				params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-				camera.setParameters(params);
-				findViewById(R.id.led_off).setVisibility(View.GONE);
-				findViewById(R.id.led_on).setVisibility(View.VISIBLE);
-			}
-		});
+//		findViewById(R.id.led_off).setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				Camera.Parameters params = camera.getParameters();
+//				params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+//				camera.setParameters(params);
+//				findViewById(R.id.led_off).setVisibility(View.GONE);
+//				findViewById(R.id.led_on).setVisibility(View.VISIBLE);
+//			}
+//		});
+//
+//		findViewById(R.id.led_on).setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				Camera.Parameters params = camera.getParameters();
+//				params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+//				camera.setParameters(params);
+//				findViewById(R.id.led_on).setVisibility(View.GONE);
+//				findViewById(R.id.led_off).setVisibility(View.VISIBLE);
+//			}
+//		});
 
-		findViewById(R.id.led_on).setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Camera.Parameters params = camera.getParameters();
-				params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-				camera.setParameters(params);
-				findViewById(R.id.led_on).setVisibility(View.GONE);
-				findViewById(R.id.led_off).setVisibility(View.VISIBLE);
-			}
-		});
-
-		((SeekBar)findViewById(R.id.light_seekbar)).setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
-			@Override
-			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,arg1);
-				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.brightness).toString()+" : "+arg1+"/255");
-			}
-			@Override
-			public void onStartTrackingTouch(SeekBar arg0) {
-				int arg1=arg0.getProgress();
-				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,arg1);
-				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.brightness).toString()+" : "+arg1+"/255");
-			}
-			@Override
-			public void onStopTrackingTouch(SeekBar arg0) {
-				updateSettingButtons();
-				updateSongTitle();
-			}
-		});
+//		((SeekBar)findViewById(R.id.light_seekbar)).setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
+//			@Override
+//			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+//				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,arg1);
+//				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.brightness).toString()+" : "+arg1+"/255");
+//			}
+//			@Override
+//			public void onStartTrackingTouch(SeekBar arg0) {
+//				int arg1=arg0.getProgress();
+//				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,arg1);
+//				((TextView)findViewById(R.id.music_artist)).setText(getString(R.string.brightness).toString()+" : "+arg1+"/255");
+//			}
+//			@Override
+//			public void onStopTrackingTouch(SeekBar arg0) {
+//				updateSettingButtons();
+//				updateSongTitle();
+//			}
+//		});
 
 		((SeekBar)findViewById(R.id.music_seekbar)).setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
 			@Override
@@ -489,8 +489,8 @@ public class MainApplication extends SmallApplication {
 				((TextView)findViewById(R.id.music_artist_small)).setText(SongChangedReceiver.songArtist);
 			}
 
-			int brightness = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
-			((SeekBar)findViewById(R.id.light_seekbar)).setProgress(brightness);
+//			int brightness = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
+//			((SeekBar)findViewById(R.id.light_seekbar)).setProgress(brightness);
 
 			AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
@@ -521,8 +521,8 @@ public class MainApplication extends SmallApplication {
 	public void onDestroy() {
 		super.onDestroy();
 		instance=null;
-		camera.stopPreview();
-		camera.release();
+//		camera.stopPreview();
+//		camera.release();
 	}
 
 	private class KeyEventSender extends AsyncTask<Integer, Object, Object> {

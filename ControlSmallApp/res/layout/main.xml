@@ -40,7 +40,7 @@
             android:layout_height="@dimen/height"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-        	android:layout_above="@+id/light_table" >
+        	android:layout_above="@+id/music_table" >
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -83,34 +83,34 @@
                     android:gravity="center" />
             </TableRow>
         </TableLayout>
-        
+
         <RelativeLayout
-            android:id="@+id/light_table"
+            android:id="@+id/music_table"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/height_little"
             android:orientation="vertical"
-        	android:layout_above="@+id/border_light" >
+        	android:layout_above="@+id/border_music" >
 
             <View
-                android:id="@+id/light_icon"
+                android:id="@+id/music_icon"
                 android:layout_width="@dimen/height_little"
                 android:layout_height="@dimen/height_little"
                 android:layout_alignParentLeft="true"
-                android:background="@drawable/light_icon"
+                android:background="@drawable/music_icon"
                 android:gravity="center" />
 
             <SeekBar
-                android:id="@+id/light_seekbar"
+                android:id="@+id/music_seekbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/light_icon"
+                android:layout_toRightOf="@+id/music_icon"
                 android:max="255" />
         </RelativeLayout>
 
         <View
-            android:id="@+id/border_light"
+            android:id="@+id/border_music"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/little"
             android:layout_margin="@dimen/margin"
@@ -148,39 +148,6 @@
             android:layout_height="@dimen/little"
             android:layout_margin="@dimen/margin"
             android:background="@color/darkgray"
-        	android:layout_above="@+id/music_table" />
-
-        <RelativeLayout
-            android:id="@+id/music_table"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/height_little"
-            android:orientation="vertical"
-        	android:layout_above="@+id/border_music" >
-
-            <View
-                android:id="@+id/music_icon"
-                android:layout_width="@dimen/height_little"
-                android:layout_height="@dimen/height_little"
-                android:layout_alignParentLeft="true"
-                android:background="@drawable/music_icon"
-                android:gravity="center" />
-
-            <SeekBar
-                android:id="@+id/music_seekbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/music_icon"
-                android:max="255" />
-        </RelativeLayout>
-
-        <View
-            android:id="@+id/border_music"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/little"
-            android:layout_margin="@dimen/margin"
-            android:background="@color/darkgray"
         	android:layout_above="@+id/settings_table" />
         
         <TableLayout
@@ -189,7 +156,7 @@
             android:layout_height="@dimen/height"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-        	android:layout_above="@+id/border_settings" >
+        	android:layout_above="@+id/action_table" >
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -271,14 +238,6 @@
                     android:gravity="center" />
             </TableRow>
         </TableLayout>
-
-        <View
-            android:id="@+id/border_settings"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/little"
-            android:layout_margin="@dimen/margin"
-            android:background="@color/darkgray"
-        	android:layout_above="@+id/action_table" />
         
         <TableLayout
             android:id="@+id/action_table"
@@ -302,19 +261,11 @@
                     android:gravity="center" />
 
                 <Button
-                    android:id="@+id/led_off"
+                    android:id="@+id/notification_off"
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
-                    android:background="@drawable/led_off"
+                    android:background="@drawable/notification_btn"
                     android:gravity="center" />
-
-                <Button
-                    android:id="@+id/led_on"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/led_on"
-                    android:gravity="center"
-                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/home_off"
@@ -328,13 +279,6 @@
                     android:layout_width="@dimen/height"
                     android:layout_height="@dimen/height"
                     android:background="@drawable/switcher_btn"
-                    android:gravity="center" />
-
-                <Button
-                    android:id="@+id/notification_off"
-                    android:layout_width="@dimen/height"
-                    android:layout_height="@dimen/height"
-                    android:background="@drawable/notification_btn"
                     android:gravity="center" />
 
                 <Button
