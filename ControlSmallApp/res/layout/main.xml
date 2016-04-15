@@ -38,9 +38,9 @@
             android:id="@+id/music_control_table"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/height"
-            android:layout_below="@+id/music_title_relative_layout"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true" >
+            android:layout_alignParentRight="true"
+        	android:layout_above="@+id/light_table" >
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -88,8 +88,8 @@
             android:id="@+id/light_table"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/height_little"
-            android:layout_below="@+id/music_control_table"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+        	android:layout_above="@+id/border_light" >
 
             <View
                 android:id="@+id/light_icon"
@@ -113,16 +113,16 @@
             android:id="@+id/border_light"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/little"
-            android:layout_below="@+id/light_table"
             android:layout_margin="@dimen/margin"
-            android:background="@color/darkgray" />
+            android:background="@color/darkgray"
+        	android:layout_above="@+id/notification_table" />
         
         <RelativeLayout
             android:id="@+id/notification_table"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/height_little"
-            android:layout_below="@+id/border_light"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+        	android:layout_above="@+id/border_notification" >
 
             <View
                 android:id="@+id/notification_icon"
@@ -146,16 +146,16 @@
             android:id="@+id/border_notification"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/little"
-            android:layout_below="@+id/notification_table"
             android:layout_margin="@dimen/margin"
-            android:background="@color/darkgray" />
+            android:background="@color/darkgray"
+        	android:layout_above="@+id/music_table" />
 
         <RelativeLayout
             android:id="@+id/music_table"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/height_little"
-            android:layout_below="@+id/border_notification"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+        	android:layout_above="@+id/border_music" >
 
             <View
                 android:id="@+id/music_icon"
@@ -179,9 +179,9 @@
             android:id="@+id/border_music"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/little"
-            android:layout_below="@+id/music_table"
             android:layout_margin="@dimen/margin"
-            android:background="@color/darkgray" />
+            android:background="@color/darkgray"
+        	android:layout_above="@+id/settings_table" />
         
         <TableLayout
             android:id="@+id/settings_table"
@@ -189,7 +189,7 @@
             android:layout_height="@dimen/height"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/border_music" >
+        	android:layout_above="@+id/border_settings" >
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -276,15 +276,14 @@
             android:id="@+id/border_settings"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/little"
-            android:layout_below="@+id/settings_table"
             android:layout_margin="@dimen/margin"
-            android:background="@color/darkgray" />
+            android:background="@color/darkgray"
+        	android:layout_above="@+id/action_table" />
         
         <TableLayout
             android:id="@+id/action_table"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/height"
-            android:layout_below="@+id/border_settings"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true" >
@@ -354,6 +353,7 @@
             android:layout_alignParentLeft="true"
         	android:layout_alignParentRight="true"
         	android:layout_alignParentTop="true"
+        	android:layout_above="@+id/music_control_table"
             android:gravity="center" >
 
             <LinearLayout
